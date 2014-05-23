@@ -1,11 +1,11 @@
 node-rate-limiting-proxy
 ========================
 
-Redis-backed per-API-key rate-limiting proxy server
+Redis-backed per-API-key rate-limiting reverse proxy
 
 ## Purpose
 
-This is a simple forwarding proxy that simulates a rate-limiter sitting between the client and the server.  It is intended for development use only.
+This is a simple reverse proxy that simulates a rate-limiter sitting in front of a Web server.  It is intended for development use only.
 
 It keeps track of requests-per-minute to specified resources and refuses access with a 429 status once a hard-coded rate limit (configurable in config.js) has been reached.  It also adds HTTP headers to provide rate-limiting information to the client.
 
@@ -17,7 +17,7 @@ Once the server is running, you will point your client at the proxy's port (defa
 
 The client must send a header with a unique API key using the header name specified under the RL_API_KEY_HEADER config variable.  (This defaults to 'api_key'.)  Failure to do so will cause the request to be rejected with a 400 status.
 
-The proxy server will add the following headers:
+The proxy server will add the following headers to the response:
 
 * X-Rate-Limit-Limit -- the rate limit per minute for this resource
 * X-Rate-Limit-Remaining -- the number of requests remaining to this resource in this window
