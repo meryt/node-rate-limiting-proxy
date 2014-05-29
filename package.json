@@ -1,9 +1,11 @@
 {
-    "name": "rate-limiter",
+    "name": "rate-limiting-proxy",
+    "description": "A simple, redis-backed, rate-limiting proxy server that can count hits per minute per API key per resource and start rejecting with a 429 status after so many hits."
     "version": "0.0.1",
     "private": true,
+    "main": "rate-limiter",
     "scripts": {
-        "start": "make s"
+        "start": "make run"
     },
     "dependencies": {
         "http-proxy": "*",

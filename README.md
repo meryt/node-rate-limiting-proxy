@@ -29,6 +29,6 @@ These instructions assume you already have redis installed and running on localh
 
 1. Clone this repo
 2. Change any settings in config.js for your environment
-3. To install the dependencies:    npm install
-4. To start the proxy server:    make s
+3. To install the dependencies:    make install
+4. To start the proxy server:    make run
 

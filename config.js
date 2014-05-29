@@ -15,7 +15,10 @@ module.exports = {
   // What header is used to identify the client
   // If header not included (and resource is rate-limited),
   // will fail with HTTP 400 status.
-  RL_API_KEY_HEADER: 'api_key'
+  RL_API_KEY_HEADER: 'api_key',
+
+  REDIS_PORT: 6379,
+  REDIS_HOST: "127.0.0.1"
 }
 
 // Override any values with env variables

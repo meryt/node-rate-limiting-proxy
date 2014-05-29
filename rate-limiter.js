@@ -10,7 +10,7 @@
 var http = require('http');
 var httpProxy = require('http-proxy');
 var c = require('./config');
-var redback = require('redback').createClient(),
+var redback = require('redback').createClient(c.REDIS_PORT, c.REDIS_HOST),
 ratelimit = redback.createRateLimit('requests', {
     bucket_interval: 60,
     bucket_span: 180,
