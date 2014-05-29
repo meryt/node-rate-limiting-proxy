@@ -38,7 +38,7 @@ module.exports.getRateLimitedResource = function(req) {
     if (req.url.match('home')) {
         return 'Home';
     }
-    if (req.url.match('engines') && req.url.match('forms') && req.method == 'POST') {
+    if (req.url.match('engines') && req.url.match('events') && req.method == 'POST') {
         return 'FormEnginePost';
     }
     return null;

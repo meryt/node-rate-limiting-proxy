@@ -139,6 +139,9 @@ function logError(err) {
 
 function logRequest(httpStatus, apikey, resource, remainingHits, windowExpirySeconds) {
     var rateLimitString = ' (resource not rate-limited)';
+    if (apikey == '' || apikey == null) {
+        apikey = '(not specified)';
+    }
     if (resource != null && resource != '') {
         rateLimitString = ' has ' + remainingHits + ' requests remaining to ' + resource + ' resource in next ' + windowExpirySeconds + ' seconds';
     }
