@@ -32,9 +32,9 @@ var proxy = httpProxy.createServer(options);
 // responses, proxying through to the target if the request is not rate-limited.
 var server = http.createServer(function(req, res) {
 
-    var api_key = typeof(req.headers[c.RL_API_KEY_HEADER]) == "undefined"
+    var api_key = typeof(req.headers[c.RL_API_KEY_HEADER.toLowerCase()]) == "undefined"
         ? ''
-        : req.headers[c.RL_API_KEY_HEADER];
+        : req.headers[c.RL_API_KEY_HEADER.toLowerCase()];
 
     var rateLimitedResource = c.getRateLimitedResource(req);
 
