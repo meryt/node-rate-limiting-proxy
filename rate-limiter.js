@@ -8,6 +8,7 @@
  */
 
 var http = require('http');
+
 var httpProxy = require('http-proxy');
 var c = require('./config');
 var redback = require('redback').createClient(c.REDIS_PORT, c.REDIS_HOST),
@@ -25,8 +26,11 @@ var options = {
     target: c.RL_API_URL
 }
 
-// Create a simply proxy server that proxies to our target URL
+// Create a simple proxy server that proxies to our target URL
 var proxy = httpProxy.createServer(options);
+
+// Before forwarding the request, replace the "Host" header with the remote host that we are proxying to.
+proxy.before('web', 'stream', function(req, res, options) { req.headers.host = options.target.host; });
 
 // Create a Web server that will respond on our port and handle requests and
 // responses, proxying through to the target if the request is not rate-limited.

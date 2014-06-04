@@ -42,7 +42,7 @@ module.exports.getRateLimitedResource = function(req) {
         return 'Home';
     }
     if (req.url.match('engines') && req.url.match('events') && req.method == 'POST') {
-        return 'FormEnginePost';
+        return 'FormEventPost';
     }
     return null;
 }
