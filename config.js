@@ -7,10 +7,10 @@ module.exports = {
   RL_PORT: 4000,
 
   // Requests to me at port RL_PORT will be forwarded here
-  RL_API_URL: 'http://localhost:8888',
+  RL_API_URL: 'http://lugh:8888',
 
   // How many requests per minute
-  RL_LIMIT_LIMIT: 5,
+  RL_LIMIT_LIMIT: 2,
 
   // What header is used to identify the client
   // If header not included (and resource is rate-limited),
@@ -38,11 +38,11 @@ module.exports.getRateLimitedResource = function(req) {
     if (!(req.url.match('reapi'))) {
         return null;
     }
-    if (req.url.match('home')) {
-        return 'Home';
-    }
-    if (req.url.match('engines') && req.url.match('events') && req.method == 'POST') {
+   if (req.url.match('engines') && req.url.match('events') && req.method == 'POST') {
         return 'FormEventPost';
+    }
+    if (req.url.match('cns/notifications') && req.method == 'POST') {
+        return 'CNSNotificationsPost';
     }
     return null;
 }
